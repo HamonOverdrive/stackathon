@@ -54,7 +54,7 @@ class CreateFlowchart extends Component {
       // the value is in the correct  format for diagram node creation
       return{
         key: i,
-        value: {name: e["Command"].toString(), port: e["Block frame"].toString()},
+        value: {name: e["Command"].toString(), port: e["Block frame"].toString(), side: true},
         text: e["Command"].toString(),
       }
     })
@@ -71,7 +71,7 @@ class CreateFlowchart extends Component {
       // the value is in the correct  format for diagram node creation
       return{
         key: i,
-        value: {name: e["Command"].toString(), port: e["Block frame"].toString()},
+        value: {name: e["Command"].toString(), port: e["Block frame"].toString(), side: false},
         text: e["Command"].toString(),
       }
     })
@@ -106,6 +106,7 @@ class CreateFlowchart extends Component {
           <Button primary onClick={this.handleSubmit}>Add Move</Button>
         </Grid.Column>
         <Grid.Column width={10}>
+          {/* component not updating on click */}
           <DiagramContainer />
         </Grid.Column>
         <Grid.Column width={3}>
