@@ -13,6 +13,18 @@ code {
     monospace;
 }
 
+.ui.dividing.header{
+  color: white;
+}
+
+.ui.center.aligned.header, .ui.centered.header {
+  color: white;
+}
+
+.ui.segment{
+  background-color: black;
+}
+
 li{
   color: white;
 }
