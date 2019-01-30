@@ -35,35 +35,30 @@ class Diagram extends Component {
     // 3) create a default node
 
     listDiagram.map((e)=>{
-      let node = new SRD.DefaultNodeModel(e['name'], "rgb(0,192,255)")
+      let rgbColor = "rgb(0,192,255)"
+      if(e["side"] === false){
+        rgbColor = "rgb(229, 3, 0)"
+      }
+      let node = new SRD.DefaultNodeModel(e['name'], rgbColor)
       let port1 = node.addOutPort(e['port']);
       node.setPosition(100, 100);
       model.addNode(node)
     })
-    // var node1 = new SRD.DefaultNodeModel("Node 1", "rgb(0,192,255)");
-    // let port1 = node1.addOutPort("Out");
-    // node1.setPosition(100, 100);
-
-    // 4) create another default node
-    // var node2 = new SRD.DefaultNodeModel("Node 2", "rgb(192,255,0)");
-    // let port2 = node2.addInPort("In");
-    // node2.setPosition(400, 100);
-
-    // 5) link the ports
-    // let link1 = port1.link(port2);
-
-    // 6) add the models to the root graph
-    // model.addAll(node1, node2, link1);
-    // 7) load model into engine
     engine.setDiagramModel(model);
   }
 
+  // do i need this here because the handleClick is in the upper component
+  // how to update when only redux state is updating?
   componentDidUpdate (prevProps) {
     // check if the listDiagram store has increased in size and render the new node onto the diagram from the last new item
-    if(this.props.listDiagram > prevProps.listDiagram){
+    if(this.props.listDiagram.length > prevProps.listDiagram.length){
       let lastObj = this.props.listDiagram[this.props.listDiagram.length -1]
+      let rgbColor = "rgb(0,192,255)"
+      if(lastObj["side"] === false){
+        rgbColor = "rgb(229, 3, 0)"
+      }
 
-      let node = new SRD.DefaultNodeModel(lastObj['name'], "rgb(0,192,255)")
+      let node = new SRD.DefaultNodeModel(lastObj['name'], rgbColor)
       let port1 = node.addOutPort(lastObj['port']);
       node.setPosition(100, 100);
       model.addNode(node)

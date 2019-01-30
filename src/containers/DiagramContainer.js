@@ -6,6 +6,7 @@ import {Diagram} from '../components';
 
 // Map the global application state to the props
 function mapStateToProps(state) {
+  console.log(state, 'hello')
   return {
     listDiagram: state.diagram
   };
